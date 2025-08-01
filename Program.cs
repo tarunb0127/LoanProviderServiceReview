@@ -8,7 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var baseString = builder.Configuration.GetConnectionString("DefaultConnection");
+var password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+var connectionString = $"{baseString}password={password}";
 builder.Services.AddDbContext<LoanProviderDbContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
