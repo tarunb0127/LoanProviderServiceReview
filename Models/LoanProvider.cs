@@ -1,11 +1,16 @@
-﻿namespace LoanProviderService.Models
+using System.ComponentModel.DataAnnotations;
+namespace LoanProviderService.Models
 {
     public class LoanProvider
     {
-        public int Id { get; set; }
-        public string ProviderName { get; set; }
-        public string BankName {  get; set; }
-        public string LicenseInfo { get; set; }
+          [Key]
+          public int Id { get; set; }
+          [Required]
+          public string? ProviderName { get; set; }
+          [Required]
+          public string? BankName {  get; set; }
+          [Required]
+          public string? LicenseInfo { get; set; }
 
     }
 }
